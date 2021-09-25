@@ -20,5 +20,6 @@
   "homepage": "https://github.com/JCahill612/weekend-jquery-server-calculator#readme",
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "devDependencies": {}
 }

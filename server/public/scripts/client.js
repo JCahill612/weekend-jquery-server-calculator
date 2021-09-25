@@ -2,15 +2,15 @@ $(onReady);
 
 function onReady (){
     console.log('JQ');
-    // on click of equal button, send the object (equation) to the server to calculate
+    // on click of equal button
     $('#equals').on('click', calculate);
-    // on click of 'C' reset the object, clear the DOM area that display current calculation.
+    // on click of 'C' 
     $('#clear').on('click', clearInputs);
-    // on click of calculator operator, assign that operator to the object (equation)
+    // on click of calculator operator, assign that operator to the object
     $('.operator').on('click', getOperator);
-    // on click of a number, catch the number and assign it to the object (equation)
+    // on click of a number, get the number and assign it to the object
     $('.button').on('click', getNumbers);
-    // allows the page to not clear information on refresh,
+    
     getAnswer();
 }
 
@@ -20,17 +20,17 @@ let num2= '';
 let operator = '';
 
 function getNumbers(){
-    // jQuery finds the click and assigns it to variable
-    let numberClicked = $(this).text();
+    // find the click and assign it to variable
+    let numClicked = $(this).text();
     
-    // checks if there is a click, stops check when an operator is clicked
-    if ( numberClicked && operator === '' ) {
-        num1 = num1 + numberClicked;
+    // check if there is a click and stops check when an operator is clicked
+    if ( numClicked && operator === '' ) {
+        num1 = num1 + numClicked;
         $('.answer').empty()
     } 
-    // if num1 has a value and operator has a value, start building num2
+    // if num1 has a value and the operator have a value move to num2
     if ( num1 != '' && operator != '') {
-        num2 = num2 + numberClicked
+        num2 = num2 + numClicked
     }   
 
     // append the clicks to the DOM
@@ -38,20 +38,20 @@ function getNumbers(){
 }
 
 function getOperator() {
-    // assigns operate to the symbal that was clicked
+    // assign to the symbol that was clicked
     operator = $(this).text();
-    console.log('clicked!', operator);
+    console.log('Clicked:', operator);
     $('.answer').empty().append(`${num1} ${operator} ${num2}`)
 }
 
-// gets calculationHistory array from server to use on the DOM
+// get calculatorHistory array from server to use on the DOM
 function getAnswer(){
-    // Ajax sends a get request to server for information on /calculate
+    // send a get request to server for information
     $.ajax({
         method: 'GET',
         url: '/calculate',
     })
-        // after getting request, show information on the DOM
+        // then show information on the DOM
         .then(function(response){
             console.log('response from server:', response)
             render(response);
@@ -66,7 +66,7 @@ function getAnswer(){
 function render(response) {
     // empty history to display only current array
     $('#history').empty();
-    // loop thru the calculationHistory array and append each equation to the DOM
+    // loop thru the calculatorHistory array and append each equation to the DOM
     for(let index of response){
         $('#history').append(`
         <li>${index.numberOne} ${index.operator} ${index.numberTwo} = ${index.result}</li>
@@ -85,15 +85,15 @@ function calculate(){
         operator: operator,
     }
 
-    // Ajax sends object to the server, posts to /calculate
+    // send object to the server, posts to /calculate
     $.ajax({
         method: 'POST',
         url: '/calculate',
         data: calculateInputs,
     })
-        // After posting information to server, console log on client side to confirm
+        // then console log on client side to confirm
         .then(function(response){
-            console.log('Calculating..', calculateInputs);
+            console.log('Calculating:', calculateInputs);
         })
         // if post fails, alert user.
         .catch(function( error ) {
@@ -101,14 +101,13 @@ function calculate(){
             alert('Sorry, something is no workie with calculate function!');
         })
     
-    // sends a get request to server for calculation results
     getAnswer();
     clearInputs();
 }
 
 // clears number inputs
 function clearInputs() {
-    console.log('Clicked! Clearing Inputs..')
+    console.log('Click cleared!')
     num1 = '';
     num2 = '';
     operator = '';
