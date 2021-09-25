@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    font-family: fantasy;
+    background-color: #865c81;
+}
+header {
+    text-align: center;
+}
+main{
+    width: 50%;
+    margin: auto;
+}
+button{
+    padding: 1rem;
+    margin: 5px;
+    background-color: #58595B;
+    color: white;
+    cursor: pointer;
+}
+#equals{
+    width: 12.5rem;
+    background-color: green;
+    margin-top: 15px;
+    margin-bottom: 9px;
+}
+.answer{
+    background-color: #cabdca;
+    padding: 10px;
+    height: 25px;
+    width: 200px;
+    margin-bottom: 15px;
+    margin-top: 9px;
+    text-align: center;
+}
+.math{
+    width: 42px;
+}
+#histOutput{
+    float: right;
+    float: top;
+    background-color: #ad9bac;
+}
+
+#history{
+    padding-left: 0;
+}
+li{
+    list-style-type: none;
+    padding-inline-start: 10px;
+}
+#clear{
+    background-color: red;
+}

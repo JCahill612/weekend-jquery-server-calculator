@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Side Calculator</title>
+    <script src="vendors/jquery-3.6.0.min.js"></script>
+    <script src="scripts/client.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <h1>Server Side Calculator</h1>
+    </header>
+    
+    <main>
+        <section id="Calculator">
+            <div class="calc-row">
+                <div class="answer"></div>
+            </div>
+            <div class="calc-row">
+                <button class ="operator" id="plus">+</button>
+                <button class ="operator" id="minus">-</button>
+                <button class ="operator" id="multiply">*</button>
+                <button class ="operator" id="divide">/</button>
+            </div>
+            <div class="calc-row">
+                <button class="button" id="7">7</button>
+                <button class="button" id="8">8</button>
+                <button class="button" id="9">9</button>
+                <button class="button" id="zero">0</button>
+            </div>
+            <div class="calc-row">
+                <button class="button" id="4">4</button>
+                <button class="button" id="5">5</button>
+                <button class="button" id="6">6</button>
+                <button class="button" id=".">.</button>
+            </div>
+            <div class="calc-row">
+                <button class="button" id="1">1</button>
+                <button class="button" id="2">2</button>
+                <button class="button" id="3">3</button>
+                <button id="clear">C</button>
+            </div>
+            <div class="calc-row">
+                <button id="equals">=</button>
+            </div>
+        </section>
+        
+        <section id="histOutput">
+            <h5>Calculator History: </h5>
+            <ul id="history"></ul>
+        </section>
+    </main>
+</body>
+</html>
