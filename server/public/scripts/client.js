@@ -89,7 +89,7 @@ function calculate(){
     $.ajax({
         method: 'POST',
         url: '/calculate',
-        data: calculateInputs,ß
+        data: calculateInputs
     })
         // then console log on client side to confirm
         .then(function(response){

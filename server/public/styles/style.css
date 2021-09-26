@@ -36,13 +36,7 @@ button{
     width: 42px;
 }
 #histOutput{
-    float: right;
-    float: top;
     background-color: #ad9bac;
-}
-
-#history{
-    padding-left: 0;
 }
 li{
     list-style-type: none;
