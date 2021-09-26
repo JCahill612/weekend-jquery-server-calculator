@@ -1,16 +1,11 @@
-$(onReady);
+$( document ).ready( onReady );
 
 function onReady (){
     console.log('JQ');
-    // on click of equal button
     $('#equals').on('click', calculate);
-    // on click of 'C' 
     $('#clear').on('click', clearInputs);
-    // on click of calculator operator, assign that operator to the object
     $('.operator').on('click', getOperator);
-    // on click of a number, get the number and assign it to the object
     $('.button').on('click', getNumbers);
-    
     getAnswer();
 }
 
@@ -32,7 +27,6 @@ function getNumbers(){
     if ( num1 != '' && operator != '') {
         num2 = num2 + numClicked
     }   
-
     // append the clicks to the DOM
     $('.answer').empty().append(`${num1} ${operator} ${num2}`);
 }
@@ -50,17 +44,13 @@ function getAnswer(){
     $.ajax({
         method: 'GET',
         url: '/calculate',
+    }).then(function(response){
+        console.log('response from server:', response)
+        render(response);
+    }).catch(function (error){
+        console.log('error from server:', error);
+        alert('Sorry, something is no workie with getAnswer function!');
     })
-        // then show information on the DOM
-        .then(function(response){
-            console.log('response from server:', response)
-            render(response);
-        })
-        // if request fails, display alert on DOM
-        .catch(function (error){
-            console.log('error from server:', error);
-            alert('Sorry, something is no workie with getAnswer function!');
-        })
 }
 
 function render(response) {
@@ -74,7 +64,6 @@ function render(response) {
         // render answer to DOM!
         $('.answer').empty().append(`${response[response.length -1].result}`);
     }
-    
 }
 
 function calculate(){
@@ -84,27 +73,21 @@ function calculate(){
         numberTwo: num2,
         operator: operator,
     }
-
     // send object to the server, posts to /calculate
     $.ajax({
         method: 'POST',
         url: '/calculate',
         data: calculateInputs
+    }).then(function(response){
+        console.log('Calculating:', calculateInputs);
+    }).catch(function( error ) {
+        console.log('error from server:', error);
+        alert('Sorry, something is no workie with calculate function!');
     })
-        // then console log on client side to confirm
-        .then(function(response){
-            console.log('Calculating:', calculateInputs);
-        })
-        // if post fails, alert user.
-        .catch(function( error ) {
-            console.log('error from server:', error);
-            alert('Sorry, something is no workie with calculate function!');
-        })
     
     getAnswer();
     clearInputs();
 }
-
 
 // clears number inputs
 function clearInputs() {

@@ -15,7 +15,7 @@ button{
     margin: 5px;
     background-color: #58595B;
     color: white;
-    cursor: pointer;
+    cursor: grab;
 }
 #equals{
     width: 12.5rem;

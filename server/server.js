@@ -44,10 +44,8 @@ app.get('/calculate', (req, res) =>{
 // recieves object from the DOM, sends to calculator!
 app.post('/calculate', (req, res) =>{
     console.log( 'calculate POST hit:', req.body );
-    
     // save the new calculation to later display in history
     calculatorHistory.push(req.body);
-    
     // use new calculation object to perform math!
     calculate(req.body)
     // sending status OK!
